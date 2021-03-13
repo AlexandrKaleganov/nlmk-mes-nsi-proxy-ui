@@ -6,6 +6,8 @@ import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {EntityModule} from './entity/entity.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import {EntityModule} from './entity/entity.module';
     EntityModule,
     AppRoutingModule,
     NgbDropdownModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
