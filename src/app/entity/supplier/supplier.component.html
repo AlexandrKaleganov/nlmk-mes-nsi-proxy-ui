@@ -1,1 +1,74 @@
-<p>supplier works!</p>
+
+
+
+
+<div class="justify-content-center">
+  <div class="row">
+    <div class="col-12" style="padding: 10px">
+      <div class="card  mb-5 bg-white rounded p-0">
+        <div class="card-header  align-middle ">
+          <div class="float-left" style="padding-right: 10px">
+            <h3><span>Поставщики</span></h3>
+          </div>
+          <div class="btn-group float-left rounded">
+            <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="showFilter()">
+              Отобразить фильтр
+            </button>
+            <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="deleteFilters()">
+              Очистить фильтры
+            </button>
+          </div>
+          <div class="btn-group float-right rounded">
+            <button
+              class="btn btn-primary btn-sm shadow float-right jh-create-entity create-ticket"
+              (click)="addNewSupplier()">
+              <span>Добавить ссылку</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-body shadow" style="overflow: auto; width: 100%;">
+          <table class="table table-hover" style="padding: 0">
+            <thead class="">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Ссылка</th>
+              <th scope="col">Короткая ссылка</th>
+              <th scope="col">Ответственный пользователь</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let url of suppliers">
+              <th class="border border-top text-center">{{url.id}}</th>
+              <td class="border border-top text-center">{{url.name}}</td>
+              <td class="border border-top text-center">
+              </td>
+              <td class="border border-top text-center">
+              </td>
+
+              <td class="border border-top text-center">
+                <div class="btn-group">
+
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="row justify-content-center">
+            <span>{{(page - 1) * itemsPerPage + 1 + ' - ' + itemsPerPage * page}}</span>
+          </div>
+          <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

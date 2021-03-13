@@ -11,7 +11,7 @@ import {EventManagerService} from '../../shared/service/event-manager.service';
   styleUrls: ['./supplier.component.css']
 })
 export class SupplierComponent implements OnInit {
-  SupplierList: Supplier[];
+  suppliers: Supplier[];
   supplierService: SupplierService;
   totalItems: number;
   itemsPerPage = 20;
@@ -58,58 +58,58 @@ export class SupplierComponent implements OnInit {
       options = options.set('firstName', this.firstNameFilter);
     }
     this.supplierService.findAll(options).subscribe(res => {
-      this.SupplierList = res.body.content;
+      this.suppliers = res.body.content;
       this.totalItems = res.body.totalElements;
       console.warn(this.totalItems);
     });
   }
 
-  //
-  // addNewSupplier(): void {
-  //   const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
-  //   modelRef.result.then(res => {
-  //     if (res) {
-  //       this.loadPage(1);
-  //     }
-  //   });
-  // }
-  //
-  // delete(supplier: Supplier): void {
-  //   console.log(supplier);
-  // }
-  //
-  // edit(supplier: Supplier): void {
-  //   const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
-  //   modelRef.componentInstance.Suppliers = supplier;
-  //   modelRef.componentInstance.currentRoles = this.currentRoles;
-  //   modelRef.componentInstance.init();
-  //   modelRef.result.then(res => {
-  //     if (res) {
-  //       this.loadPage(1);
-  //     }
-  //   });
-  // }
-  //
-  // showFilter() {
-  //   const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
-  //   modelRef.componentInstance.loginFilter = this.loginFilter;
-  //   modelRef.componentInstance.domainFilter = this.domainFilter;
-  //   modelRef.componentInstance.firstNameFilter = this.firstNameFilter;
-  //   modelRef.result.then(result => {
-  //     console.log(result);
-  //     if (result) {
-  //       this.loginFilter = result.loginFilter;
-  //       this.firstNameFilter = result.firstNameFilter;
-  //       this.domainFilter = result.domainFilter;
-  //       this.loadPage(1);
-  //     }
-  //   });
-  // }
-  //
-  // deleteFilters(): void {
-  //   this.loginFilter = null;
-  //   this.firstNameFilter = null;
-  //   this.domainFilter = null;
-  //   this.loadPage(1);
-  // }
+
+  addNewSupplier(): void {
+    // const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
+    // modelRef.result.then(res => {
+    //   if (res) {
+    //     this.loadPage(1);
+    //   }
+    // });
+  }
+
+  delete(supplier: Supplier): void {
+    console.log(supplier);
+  }
+
+  edit(supplier: Supplier): void {
+    // const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
+    // modelRef.componentInstance.Suppliers = supplier;
+    // modelRef.componentInstance.currentRoles = this.currentRoles;
+    // modelRef.componentInstance.init();
+    // modelRef.result.then(res => {
+    //   if (res) {
+    //     this.loadPage(1);
+    //   }
+    // });
+  }
+
+  showFilter(): void {
+    // const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
+    // modelRef.componentInstance.loginFilter = this.loginFilter;
+    // modelRef.componentInstance.domainFilter = this.domainFilter;
+    // modelRef.componentInstance.firstNameFilter = this.firstNameFilter;
+    // modelRef.result.then(result => {
+    //   console.log(result);
+    //   if (result) {
+    //     this.loginFilter = result.loginFilter;
+    //     this.firstNameFilter = result.firstNameFilter;
+    //     this.domainFilter = result.domainFilter;
+    //     this.loadPage(1);
+    //   }
+    // });
+  }
+
+  deleteFilters(): void {
+    this.loginFilter = null;
+    this.firstNameFilter = null;
+    this.domainFilter = null;
+    this.loadPage(1);
+  }
 }

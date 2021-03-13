@@ -16,16 +16,17 @@
     "@angular/compiler": "~11.2.3",
     "@angular/core": "~11.2.3",
     "@angular/forms": "~11.2.3",
+    "@angular/localize": "^11.2.5",
     "@angular/platform-browser": "~11.2.3",
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.3",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "angular-dropdown-menu": "^0.3.0",
     "bootstrap": "^4.5.3",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.2",
