@@ -6,6 +6,7 @@ import {HttpParams} from '@angular/common/http';
 import {EventManagerService} from '../../shared/service/event-manager.service';
 import {EditSupplierComponent} from './edit-supplier/edit-supplier.component';
 import {DeleteSupplierComponent} from './delete-supplier/delete-supplier.component';
+import {FilterSupplierComponent} from './filter-supplier/filter-supplier.component';
 
 @Component({
   selector: 'app-supplier',
@@ -38,10 +39,10 @@ export class SupplierComponent implements OnInit {
     options = options.set('size', this.itemsPerPage.toString());
     options = options.set('sort', 'name');
     if (this.codeFilter) {
-      options = options.set('code', this.codeFilter);
+      options = options.set('code.contains', this.codeFilter);
     }
     if (this.nameFilter) {
-      options = options.set('name', this.nameFilter);
+      options = options.set('name.contains', this.nameFilter);
     }
     this.supplierService.findAll(options).subscribe(res => {
       this.suppliers = res.body.content;
@@ -83,19 +84,17 @@ export class SupplierComponent implements OnInit {
   }
 
   showFilter(): void {
-    // const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
-    // modelRef.componentInstance.loginFilter = this.loginFilter;
-    // modelRef.componentInstance.domainFilter = this.domainFilter;
-    // modelRef.componentInstance.firstNameFilter = this.firstNameFilter;
-    // modelRef.result.then(result => {
-    //   console.log(result);
-    //   if (result) {
-    //     this.loginFilter = result.loginFilter;
-    //     this.firstNameFilter = result.firstNameFilter;
-    //     this.domainFilter = result.domainFilter;
-    //     this.loadPage(1);
-    //   }
-    // });
+    const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
+    modelRef.componentInstance.codeFilter = this.codeFilter;
+    modelRef.componentInstance.nameFilter = this.nameFilter;
+    modelRef.result.then(result => {
+      console.log(result);
+      if (result) {
+        this.codeFilter = result.codeFilter;
+        this.nameFilter = result.nameFilter;
+        this.loadPage(1);
+      }
+    });
   }
 
   deleteFilters(): void {
