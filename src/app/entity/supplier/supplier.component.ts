@@ -4,6 +4,8 @@ import {Supplier} from '../../shared/models/supplier.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpParams} from '@angular/common/http';
 import {EventManagerService} from '../../shared/service/event-manager.service';
+import {EditSupplierComponent} from './edit-supplier/edit-supplier.component';
+import {DeleteSupplierComponent} from './delete-supplier/delete-supplier.component';
 
 @Component({
   selector: 'app-supplier',
@@ -16,46 +18,30 @@ export class SupplierComponent implements OnInit {
   totalItems: number;
   itemsPerPage = 20;
   page = 1;
-  loginFilter: string;
-  domainFilter: string;
-  firstNameFilter: string;
-  eventManagerService: EventManagerService;
+  codeFilter: string;
+  nameFilter: string;
 
-  constructor(eventManagerService: EventManagerService, supplierService: SupplierService, public modalService: NgbModal) {
+  constructor(supplierService: SupplierService, public modalService: NgbModal) {
     this.supplierService = supplierService;
-    this.eventManagerService = eventManagerService;
   }
 
   ngOnInit(): void {
-    this.registerChangeInApps();
     this.loadPage();
-  }
-
-  registerChangeInApps(): void {
-    this.eventManagerService.map$.subscribe((map: Map<any, any>) => {
-      if (map.has('modifySupplier')) {
-        this.loadPage();
-      }
-    });
   }
 
   loadPage(page?: number): void {
     const pageToLoad: number = page ? page : this.page;
-    console.log(pageToLoad);
     let options: HttpParams = new HttpParams();
     if (pageToLoad !== undefined) {
       options = options.set('page', (pageToLoad - 1).toString());
     }
     options = options.set('size', this.itemsPerPage.toString());
-    options = options.set('sort', 'id');
-    if (this.loginFilter) {
-      options = options.set('login', this.loginFilter);
+    options = options.set('sort', 'name');
+    if (this.codeFilter) {
+      options = options.set('code', this.codeFilter);
     }
-    if (this.domainFilter) {
-      options = options.set('domain', this.domainFilter);
-    }
-    if (this.firstNameFilter) {
-      options = options.set('firstName', this.firstNameFilter);
+    if (this.nameFilter) {
+      options = options.set('name', this.nameFilter);
     }
     this.supplierService.findAll(options).subscribe(res => {
       this.suppliers = res.body.content;
@@ -66,28 +52,34 @@ export class SupplierComponent implements OnInit {
 
 
   addNewSupplier(): void {
-    // const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
-    // modelRef.result.then(res => {
-    //   if (res) {
-    //     this.loadPage(1);
-    //   }
-    // });
+    const modalRef = this.modalService.open(EditSupplierComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.init();
+    modalRef.result.then(result => {
+      if (result && result.update) {
+        this.loadPage();
+      }
+    });
   }
 
   delete(supplier: Supplier): void {
-    console.log(supplier);
+    const modalRef = this.modalService.open(DeleteSupplierComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.supplier = supplier;
+    modalRef.result.then(result => {
+      if (result && result.update) {
+        this.loadPage();
+      }
+    });
   }
 
   edit(supplier: Supplier): void {
-    // const modelRef = this.modalService.open(CreateSupplierComponent, {size: 'lg', backdrop: 'static'});
-    // modelRef.componentInstance.Suppliers = supplier;
-    // modelRef.componentInstance.currentRoles = this.currentRoles;
-    // modelRef.componentInstance.init();
-    // modelRef.result.then(res => {
-    //   if (res) {
-    //     this.loadPage(1);
-    //   }
-    // });
+    const modalRef = this.modalService.open(EditSupplierComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.supplier = supplier;
+    modalRef.componentInstance.init();
+    modalRef.result.then(result => {
+      if (result && result.update) {
+        this.loadPage();
+      }
+    });
   }
 
   showFilter(): void {
@@ -107,9 +99,8 @@ export class SupplierComponent implements OnInit {
   }
 
   deleteFilters(): void {
-    this.loginFilter = null;
-    this.firstNameFilter = null;
-    this.domainFilter = null;
+    this.codeFilter = null;
+    this.nameFilter = null;
     this.loadPage(1);
   }
 }

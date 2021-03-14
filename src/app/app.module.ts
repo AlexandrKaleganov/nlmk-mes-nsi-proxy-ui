@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {EntityModule} from './entity/entity.module';
 import { HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,8 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     EntityModule,
     AppRoutingModule,
     NgbDropdownModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

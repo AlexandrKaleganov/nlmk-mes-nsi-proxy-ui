@@ -1,7 +1,3 @@
-
-
-
-
 <div class="justify-content-center">
   <div class="row">
     <div class="col-12" style="padding: 10px">
@@ -22,33 +18,38 @@
             <button
               class="btn btn-primary btn-sm shadow float-right jh-create-entity create-ticket"
               (click)="addNewSupplier()">
-              <span>Добавить ссылку</span>
+              <span>Добавить поставщика</span>
             </button>
           </div>
         </div>
         <div class="card-body shadow" style="overflow: auto; width: 100%;">
-          <table class="table table-hover" style="padding: 0">
+          <table class="table table-striped  " style="padding: 0">
             <thead class="">
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Ссылка</th>
-              <th scope="col">Короткая ссылка</th>
-              <th scope="col">Ответственный пользователь</th>
+              <th class="text-center" scope="col">Code</th>
+              <th class="text-center"  scope="col">Наименование</th>
+              <th class="text-center"  scope="col">Создан</th>
+              <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let url of suppliers">
-              <th class="border border-top text-center">{{url.id}}</th>
-              <td class="border border-top text-center">{{url.name}}</td>
-              <td class="border border-top text-center">
+            <tr *ngFor="let supplier of suppliers">
+              <th class=" text-center">{{supplier.code}}</th>
+              <td class=" text-center">{{supplier.name}}</td>
+              <td class=" text-center">{{supplier.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
-              <td class="border border-top text-center">
+              <td class=" text-center">{{supplier.updTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
 
-              <td class="border border-top text-center">
+              <td class=" text-center">
                 <div class="btn-group">
-
+                  <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="edit(supplier)">
+                   Редактировать
+                  </button>
+                  <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="delete(supplier)">
+                   Удалить
+                  </button>
                 </div>
               </td>
             </tr>

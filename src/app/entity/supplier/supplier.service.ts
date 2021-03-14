@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {PageModel} from '../../shared/models/page-model.model';
 import {Supplier} from '../../shared/models/supplier.model';
@@ -28,8 +28,15 @@ export class SupplierService {
       });
   }
 
+  delete(id: string): Observable<HttpResponse<{}>> {
+    return this.http.delete(`${this.url}/${id}`,
+      {
+        observe: 'response'
+      });
+  }
+
   update(options: Supplier): Observable<HttpResponse<Supplier>> {
-    return this.http.put<Supplier>(this.url, options,
+    return this.http.put<Supplier>(`${this.url}/${options.id}`, options,
       {
         observe: 'response'
       });
