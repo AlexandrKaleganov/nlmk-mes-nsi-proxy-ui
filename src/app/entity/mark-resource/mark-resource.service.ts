@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GLOBAL_URL} from '../../shared/constant/url.constant';
 import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -17,6 +17,11 @@ export class MarkResourceService {
   findAll(options: HttpParams): Observable<HttpResponse<PageModel<MarkResource>>> {
     return this.http.get<PageModel<MarkResource>>(this.url, {
       params: options,
+      observe: 'response'
+    });
+  }
+  findAllList(): Observable<HttpResponse<MarkResource[]>> {
+    return this.http.get<MarkResource[]>(this.url + '/list', {
       observe: 'response'
     });
   }

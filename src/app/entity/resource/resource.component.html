@@ -4,7 +4,7 @@
       <div class="card  mb-5 bg-white rounded p-0">
         <div class="card-header  align-middle ">
           <div class="float-left" style="padding-right: 10px">
-            <h3><span>Марки материальных ресурсов</span></h3>
+            <h3><span>Материальные ресурсы</span></h3>
           </div>
           <div class="btn-group float-left rounded">
             <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="showFilter()">
@@ -17,8 +17,8 @@
           <div class="btn-group float-right rounded">
             <button
               class="btn btn-primary btn-sm shadow float-right jh-create-entity create-ticket"
-              (click)="addNewMarkResource()">
-              <span>Добавить марку материального ресурса</span>
+              (click)="addNewResource()">
+              <span>Добавить материальный ресурс</span>
             </button>
           </div>
         </div>
@@ -29,27 +29,31 @@
               <th class="text-center" scope="col">Код</th>
               <th class="text-center"  scope="col">Наименование</th>
               <th class="text-center"  scope="col">Краткое наименование</th>
+              <th class="text-center"  scope="col">Код поставщика</th>
+              <th class="text-center"  scope="col">Код марки материального ресурса</th>
               <th class="text-center"  scope="col">Создан</th>
               <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let markResource of markResources">
-              <th class=" text-center">{{markResource.code}}</th>
-              <td class=" text-center">{{markResource.name}}</td>
-              <td class=" text-center">{{markResource.shortName}}</td>
-              <td class=" text-center">{{markResource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
+            <tr *ngFor="let resource of resources">
+              <th class=" text-center">{{resource.code}}</th>
+              <td class=" text-center">{{resource.name}}</td>
+              <td class=" text-center">{{resource.shortName}}</td>
+              <td class=" text-center">{{resource.supplierCode}}</td>
+              <td class=" text-center">{{resource.materialResourceMarkCode}}</td>
+              <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
-              <td class=" text-center">{{markResource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}
+              <td class=" text-center">{{resource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
 
               <td class=" text-center">
                 <div class="btn-group">
-                  <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="edit(markResource)">
+                  <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="edit(resource)">
                     Редактировать
                   </button>
-                  <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="delete(markResource)">
+                  <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="delete(resource)">
                     Удалить
                   </button>
                 </div>

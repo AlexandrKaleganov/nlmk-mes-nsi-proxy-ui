@@ -1,8 +1,7 @@
 <div class="modal-header">
 
-  <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading"
-  >Добавить поставщика</h2>
-  <h2 *ngIf="editForm.get('id')!.value">Редактировать поставщика</h2>
+  <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading">Добавить материальный ресурс</h2>
+  <h2 *ngIf="editForm.get('id')!.value">Редактировать материальный ресурс</h2>
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
           (click)="clear()">&times;
   </button>
@@ -29,6 +28,18 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="form-control-label" for="field_shortName">Краткое наименование</label>
+        <input autocomplete="off" type="text" class="form-control" name="shortName" id="field_shortName"
+               formControlName="shortName"/>
+        <div
+          *ngIf="editForm.get('shortName')!.invalid && (editForm.get('shortName')!.dirty || editForm.get('shortName')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('shortName')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
         <label class="form-control-label" for="field_name">Код</label>
         <input autocomplete="off" type="text" class="form-control" name="code" id="field_code"
                formControlName="code" />
@@ -39,6 +50,26 @@
             This field is required.
           </small>
         </div>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_supplierId">Марка материального ресурса</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_materialResourceMarkId" name="materialResourceMarkId"
+                formControlName="materialResourceMarkId" >
+          <option *ngIf="!editForm.get('materialResourceMarkId')!.value" [ngValue]="null"></option>
+          <option [ngValue]="supplier.id"
+                  *ngFor="let supplier of materialResourceMarkList; trackBy: trackByIdMark">{{supplier.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_supplierId">Поставщик</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_supplierId" name="supplierId"
+                formControlName="supplierId" >
+          <option *ngIf="!editForm.get('supplierId')!.value" [ngValue]="null"></option>
+          <option [ngValue]="supplier.id"
+                  *ngFor="let supplier of suppliers; trackBy: trackById">{{supplier.name}}</option>
+        </select>
       </div>
       <div class="form-group">
         <label class="form-control-label" for="field_insTime">Добавлен</label>
@@ -64,6 +95,6 @@
       </button>
     </div>
   </form>
-  <app-error *ngIf="errorMessage" [errorMessage]="errorMessage"
+    <app-error *ngIf="errorMessage" [errorMessage]="errorMessage"
              (closeAlert)="closeError()"></app-error>
 </div>

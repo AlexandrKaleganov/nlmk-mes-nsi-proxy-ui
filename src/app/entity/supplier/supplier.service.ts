@@ -4,6 +4,7 @@ import {PageModel} from '../../shared/models/page-model.model';
 import {Supplier} from '../../shared/models/supplier.model';
 import {Observable} from 'rxjs';
 import {GLOBAL_URL} from '../../shared/constant/url.constant';
+import {MarkResource} from '../../shared/models/mark-resource.class';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class SupplierService {
       observe: 'response'
     });
   }
-
+  findAllList(): Observable<HttpResponse<Supplier[]>> {
+    return this.http.get<Supplier[]>(this.url + '/list', {
+      observe: 'response'
+    });
+  }
   save(options: Supplier): Observable<HttpResponse<Supplier>> {
     return this.http.post<Supplier>(this.url, options,
       {

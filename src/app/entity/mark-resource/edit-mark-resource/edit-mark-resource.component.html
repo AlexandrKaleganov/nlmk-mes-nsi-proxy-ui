@@ -18,7 +18,7 @@
 
       <div class="form-group">
         <label class="form-control-label" for="field_name">Наименование</label>
-        <input type="text" class="form-control" name="name" id="field_name"
+        <input autocomplete="off" type="text" class="form-control" name="name" id="field_name"
                formControlName="name"/>
         <div
           *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
@@ -30,7 +30,7 @@
       </div>
       <div class="form-group">
         <label class="form-control-label" for="field_shortName">Краткое наименование</label>
-        <input type="text" class="form-control" name="shortName" id="field_shortName"
+        <input autocomplete="off" type="text" class="form-control" name="shortName" id="field_shortName"
                formControlName="shortName"/>
         <div
           *ngIf="editForm.get('shortName')!.invalid && (editForm.get('shortName')!.dirty || editForm.get('shortName')!.touched)">
@@ -42,7 +42,7 @@
       </div>
       <div class="form-group">
         <label class="form-control-label" for="field_name">Код</label>
-        <input type="text" class="form-control" name="code" id="field_code"
+        <input autocomplete="off" type="text" class="form-control" name="code" id="field_code"
                formControlName="code" />
         <div
           *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
