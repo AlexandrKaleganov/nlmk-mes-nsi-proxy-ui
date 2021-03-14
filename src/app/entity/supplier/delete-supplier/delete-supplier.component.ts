@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Supplier} from '../../../shared/models/supplier.model';
 import {SupplierService} from '../supplier.service';
-import {EventManagerService} from '../../../shared/service/event-manager.service';
 
 @Component({
   selector: 'app-delete-supplier',

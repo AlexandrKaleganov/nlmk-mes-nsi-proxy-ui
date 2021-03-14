@@ -1,29 +1,28 @@
-import {Component, OnInit} from '@angular/core';
-import {SupplierService} from './supplier.service';
-import {Supplier} from '../../shared/models/supplier.model';
+import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpParams} from '@angular/common/http';
-import {EventManagerService} from '../../shared/service/event-manager.service';
-import {EditSupplierComponent} from './edit-supplier/edit-supplier.component';
-import {DeleteSupplierComponent} from './delete-supplier/delete-supplier.component';
-import {FilterSupplierComponent} from './filter-supplier/filter-supplier.component';
+import {MarkResourceService} from './mark-resource.service';
+import {EditMarkResourceComponent} from './edit-mark-resource/edit-mark-resource.component';
+import {FilterMarkResourceComponent} from './filter-mark-resource/filter-mark-resource.component';
+import {DeleteMarkResourceComponent} from './delete-mark-resource/delete-mark-resource.component';
+import {MarkResource} from '../../shared/models/mark-resource.class';
 
 @Component({
-  selector: 'app-supplier',
-  templateUrl: './supplier.component.html',
-  styleUrls: ['./supplier.component.css']
+  selector: 'app-mark-resource',
+  templateUrl: './mark-resource.component.html',
+  styleUrls: ['./mark-resource.component.css']
 })
-export class SupplierComponent implements OnInit {
-  suppliers: Supplier[];
-  supplierService: SupplierService;
+export class MarkResourceComponent implements OnInit {
+  markResources: MarkResource[];
+  markResourceService: MarkResourceService;
   totalItems: number;
   itemsPerPage = 20;
   page = 1;
   codeFilter: string;
   nameFilter: string;
 
-  constructor(supplierService: SupplierService, public modalService: NgbModal) {
-    this.supplierService = supplierService;
+  constructor(markResourceService: MarkResourceService, public modalService: NgbModal) {
+    this.markResourceService = markResourceService;
   }
 
   ngOnInit(): void {
@@ -44,15 +43,15 @@ export class SupplierComponent implements OnInit {
     if (this.nameFilter) {
       options = options.set('name.contains', this.nameFilter);
     }
-    this.supplierService.findAll(options).subscribe(res => {
-      this.suppliers = res.body.content;
+    this.markResourceService.findAll(options).subscribe(res => {
+      this.markResources = res.body.content;
       this.totalItems = res.body.totalElements;
     });
   }
 
 
-  addNewSupplier(): void {
-    const modalRef = this.modalService.open(EditSupplierComponent, {size: 'lg', backdrop: 'static'});
+  addNewMarkResource(): void {
+    const modalRef = this.modalService.open(EditMarkResourceComponent, {size: 'lg', backdrop: 'static'});
     modalRef.componentInstance.init();
     modalRef.result.then(result => {
       if (result && result.update) {
@@ -61,9 +60,9 @@ export class SupplierComponent implements OnInit {
     });
   }
 
-  delete(supplier: Supplier): void {
-    const modalRef = this.modalService.open(DeleteSupplierComponent, {size: 'lg', backdrop: 'static'});
-    modalRef.componentInstance.supplier = supplier;
+  delete(markResource: MarkResource): void {
+    const modalRef = this.modalService.open(DeleteMarkResourceComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.markResource = markResource;
     modalRef.result.then(result => {
       if (result && result.update) {
         this.loadPage();
@@ -71,9 +70,9 @@ export class SupplierComponent implements OnInit {
     });
   }
 
-  edit(supplier: Supplier): void {
-    const modalRef = this.modalService.open(EditSupplierComponent, {size: 'lg', backdrop: 'static'});
-    modalRef.componentInstance.supplier = supplier;
+  edit(markResource: MarkResource): void {
+    const modalRef = this.modalService.open(EditMarkResourceComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.markResource = markResource;
     modalRef.componentInstance.init();
     modalRef.result.then(result => {
       if (result && result.update) {
@@ -83,7 +82,7 @@ export class SupplierComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
+    const modelRef = this.modalService.open(FilterMarkResourceComponent, {size: 'lg', backdrop: 'static'});
     modelRef.componentInstance.codeFilter = this.codeFilter;
     modelRef.componentInstance.nameFilter = this.nameFilter;
     modelRef.result.then(result => {
