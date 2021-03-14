@@ -63,7 +63,7 @@ export class ResourceComponent implements OnInit {
 
   delete(resource: Resource): void {
     const modalRef = this.modalService.open(DeleteResourceComponent, {size: 'lg', backdrop: 'static'});
-    modalRef.componentInstance.resources = resource;
+    modalRef.componentInstance.resource = resource;
     modalRef.result.then(result => {
       if (result && result.update) {
         this.loadPage();
