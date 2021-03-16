@@ -53,12 +53,12 @@
       </div>
       <div class="form-group">
         <label class="form-control-label"
-               for="field_supplierId">Марка материального ресурса</label>
+               for="field_materialResourceMarkId">Марка материального ресурса</label>
         <select class="form-control shadow-sm bg-white rounded" id="field_materialResourceMarkId" name="materialResourceMarkId"
                 formControlName="materialResourceMarkId" >
           <option *ngIf="!editForm.get('materialResourceMarkId')!.value" [ngValue]="null"></option>
-          <option [ngValue]="supplier.id"
-                  *ngFor="let supplier of materialResourceMarkList; trackBy: trackByIdMark">{{supplier.name}}</option>
+          <option [ngValue]="mark.id"
+                  *ngFor="let mark of materialResourceMarkList; trackBy: trackByIdMark">{{mark.name}}</option>
         </select>
       </div>
       <div class="form-group">
