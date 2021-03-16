@@ -4,6 +4,8 @@ import {MarkResource} from '../../../shared/models/mark-resource.class';
 import {TypeResource} from '../../../shared/models/type-resource.model';
 import {MarkResourceService} from '../../mark-resource/mark-resource.service';
 import {TypeResourceService} from '../../type-resource/type-resource.service';
+import {ClassResource} from '../../../shared/models/class-resource.model';
+import {ClassResourceService} from '../../class-resource/class-resource.service';
 
 @Component({
   selector: 'app-filter-resource',
@@ -15,17 +17,22 @@ export class FilterResourceComponent implements OnInit {
   nameFilter: string;
   markResourceService: MarkResourceService;
   typeResourceService: TypeResourceService;
+  classResourceService: ClassResourceService;
 
   materialResourceMarkList: MarkResource[] = [];
   materialResourceTypeList: TypeResource[] = [];
+  materialResourceClassList: ClassResource[] = [];
 
   materialResourceMarkId: string;
   materialResourceTypeId: string;
+  materialResourceClassId: string;
 
 
-  constructor(public activeModal: NgbActiveModal, markResourceService: MarkResourceService, typeResourceService: TypeResourceService) {
+  constructor(public activeModal: NgbActiveModal, markResourceService: MarkResourceService, typeResourceService: TypeResourceService,
+              classResourceService: ClassResourceService) {
     this.markResourceService = markResourceService;
     this.typeResourceService = typeResourceService;
+    this.classResourceService = classResourceService;
   }
 
   ngOnInit(): void {
@@ -42,6 +49,9 @@ export class FilterResourceComponent implements OnInit {
     this.typeResourceService.findAllList().subscribe(res => {
       this.materialResourceTypeList = res.body;
     });
+    this.classResourceService.findAllList().subscribe(res => {
+      this.materialResourceClassList = res.body;
+    });
   }
 
   trackByIdMark(index: number, item: MarkResource): any {
@@ -52,12 +62,17 @@ export class FilterResourceComponent implements OnInit {
     return item.id;
   }
 
+  trackByIdClass(index: number, item: ClassResource): any {
+    return item.id;
+  }
+
   filter(): void {
     this.activeModal.close({
       codeFilter: this.codeFilter,
       nameFilter: this.nameFilter,
       materialResourceMarkId: this.materialResourceMarkId,
       materialResourceTypeId: this.materialResourceTypeId,
+      materialResourceClassId: this.materialResourceClassId,
     });
   }
 }

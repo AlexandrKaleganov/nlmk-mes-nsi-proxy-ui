@@ -31,6 +31,15 @@
               *ngFor="let type of materialResourceTypeList; trackBy: trackByIdType">{{type.name}}</option>
     </select>
   </div>
+  <div class="form-group">
+    <label class="form-control-label"
+           for="field_materialResourceClassId">Класс материального ресурса</label>
+    <select class="form-control shadow-sm bg-white rounded" id="field_materialResourceClassId"
+    [(ngModel)]="materialResourceClassId" >
+      <option [ngValue]="classd.id"
+              *ngFor="let classd of materialResourceClassList; trackBy: trackByIdClass">{{classd.name}}</option>
+    </select>
+  </div>
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary btn-sm shadow" (click)="filter()">Фильтровать</button>

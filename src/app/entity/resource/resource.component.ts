@@ -22,6 +22,7 @@ export class ResourceComponent implements OnInit {
   nameFilter: string;
   materialResourceMarkId: string;
   materialResourceTypeId: string;
+  materialResourceClassId: string;
 
   constructor(resourceService1: ResourceService, public modalService: NgbModal) {
     this.resourceService = resourceService1;
@@ -47,6 +48,9 @@ export class ResourceComponent implements OnInit {
     }
     if (this.materialResourceTypeId) {
       options = options.set('materialResourceTypeId.equals', this.materialResourceTypeId);
+    }
+    if (this.materialResourceClassId) {
+      options = options.set('materialResourceClassId.equals', this.materialResourceClassId);
     }
     if (this.nameFilter) {
       options = options.set('name.contains', this.nameFilter);
@@ -97,6 +101,7 @@ export class ResourceComponent implements OnInit {
     modelRef.componentInstance.nameFilter = this.nameFilter;
     modelRef.componentInstance.materialResourceMarkId = this.materialResourceMarkId;
     modelRef.componentInstance.materialResourceTypeId = this.materialResourceTypeId;
+    modelRef.componentInstance.materialResourceClassId = this.materialResourceClassId;
     modelRef.componentInstance.loadDirectories();
     modelRef.result.then(result => {
       if (result) {
@@ -104,8 +109,7 @@ export class ResourceComponent implements OnInit {
         this.nameFilter = result.nameFilter;
         this.materialResourceMarkId = result.materialResourceMarkId;
         this.materialResourceTypeId = result.materialResourceTypeId;
-        console.log(result.materialResourceMarkId);
-        console.log(result.materialResourceTypeId);
+        this.materialResourceClassId = result.materialResourceClassId;
         this.loadPage(1);
       }
     });
@@ -116,6 +120,7 @@ export class ResourceComponent implements OnInit {
     this.nameFilter = null;
     this.materialResourceMarkId = null;
     this.materialResourceTypeId = null;
+    this.materialResourceClassId = null;
     this.loadPage(1);
   }
 }

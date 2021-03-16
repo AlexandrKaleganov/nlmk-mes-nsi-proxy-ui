@@ -121,7 +121,6 @@ export class EditResourceComponent implements OnInit {
 
   private saveResult(res: HttpResponse<Resource>): void {
     this.isSaving = false;
-    console.error(res.body.id);
     if (res.body && res.body.id != null) {
       this.activeModal.close({
         update: true
