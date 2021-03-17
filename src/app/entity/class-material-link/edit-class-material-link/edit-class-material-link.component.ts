@@ -16,6 +16,7 @@ import {TypeResourceService} from '../../type-resource/type-resource.service';
 import {TypeResource} from '../../../shared/models/type-resource.model';
 import {ClassResource} from '../../../shared/models/class-resource.model';
 import {ClassMaterialLink} from '../../../shared/models/class-material-link.model';
+import {ClassResourceService} from '../../class-resource/class-resource.service';
 
 @Component({
   selector: 'app-edit-class-material-link',
@@ -28,16 +29,16 @@ export class EditClassMaterialLinkComponent implements OnInit {
   classMaterialLinkService: ClassMaterialLinkService;
   errorMessage: string | undefined;
   resourceService: ResourceService;
-  typeResourceService: TypeResourceService;
+  classResourceService: ClassResourceService;
   classResources: ClassResource[] = [];
   materialResource: Resource[] = [];
 
-  constructor(public activeModal: NgbActiveModal, resourceService: ClassMaterialLinkService, typeResourceService1: TypeResourceService,
+  constructor(public activeModal: NgbActiveModal, resourceService: ClassMaterialLinkService, classResourceService: ClassResourceService,
               resourceService1: ResourceService,
               private fb: FormBuilder) {
     this.classMaterialLinkService = resourceService;
     this.resourceService = resourceService1;
-    this.typeResourceService = typeResourceService1;
+    this.classResourceService = classResourceService;
   }
 
   editForm = this.fb.group({
@@ -63,7 +64,7 @@ export class EditClassMaterialLinkComponent implements OnInit {
   }
 
   loadDirectories(): void {
-    this.typeResourceService.findAllList().subscribe(res => {
+    this.classResourceService.findAllList().subscribe(res => {
       this.classResources = res.body;
     });
     this.resourceService.findAllList().subscribe(res => {

@@ -4,7 +4,7 @@
       <div class="card  mb-5 bg-white rounded p-0">
         <div class="card-header  align-middle ">
           <div class="float-left" style="padding-right: 10px">
-            <h3><span>Свзи материальных ресурсов и классов ресурсов</span></h3>
+            <h3><span>Связи материальных ресурсов и классов ресурсов</span></h3>
           </div>
           <div class="btn-group float-left rounded">
             <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="showFilter()">
@@ -26,8 +26,10 @@
           <table class="table table-striped  " style="padding: 0">
             <thead class="">
             <tr>
-              <th class="text-center" scope="col">Код материального ресурса</th>
-              <th class="text-center"  scope="col">Код класса материального ресурса</th>
+              <th class="text-center" scope="col">Код мат. ресурса</th>
+              <th class="text-center" scope="col">Наименование мат. ресурса</th>
+              <th class="text-center"  scope="col">Код класса мат. ресурса</th>
+              <th class="text-center"  scope="col">Наименование класса мат. ресурса</th>
               <th class="text-center"  scope="col">Создан</th>
               <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
@@ -36,7 +38,9 @@
             <tbody>
             <tr *ngFor="let resource of classMaterialLinks">
               <th class=" text-center">{{resource.materialResourceCode}}</th>
+              <th class=" text-center">{{resource.materialResourceName}}</th>
               <td class=" text-center">{{resource.materialResourceClassCode}}</td>
+              <td class=" text-center">{{resource.materialResourceClassName}}</td>
               <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
               <td class=" text-center">{{resource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}
