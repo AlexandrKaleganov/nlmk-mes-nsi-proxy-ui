@@ -13,7 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,91 @@
+<div class="modal-header">
+
+  <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading">Добавить качествен. харак</h2>
+  <h2 *ngIf="editForm.get('id')!.value">Редактировать качествен. харак</h2>
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          (click)="clear()">&times;
+  </button>
+</div>
+<div class="modal-body">
+  <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+    <div>
+
+      <div class="form-group" [hidden]="!editForm.get('id')!.value">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="field_name">Наименование</label>
+        <input autocomplete="off" type="text" class="form-control" name="name" id="field_name"
+               formControlName="name"/>
+        <div
+          *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('name')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="field_shortName">Краткое наименование</label>
+        <input autocomplete="off" type="text" class="form-control" name="shortName" id="field_shortName"
+               formControlName="shortName"/>
+        <div
+          *ngIf="editForm.get('shortName')!.invalid && (editForm.get('shortName')!.dirty || editForm.get('shortName')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('shortName')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="field_name">Код</label>
+        <input autocomplete="off" type="text" class="form-control" name="code" id="field_code"
+               formControlName="code" />
+        <div
+          *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('code')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_qualityIndicatorType">Тип кач хар.</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_qualityIndicatorType" name="qualityIndicatorType"
+                formControlName="qualityIndicatorType" >
+          <option *ngIf="!editForm.get('qualityIndicatorType')!.value" [ngValue]="null"></option>
+          <option value="CHEMICAL">CHEMICAL</option>
+          <option value="PHYSICAL">PHYSICAL</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="field_insTime">Добавлен</label>
+        <input type="datetime-local" class="form-control" name="description" id="field_insTime"
+               formControlName="insTime" readonly/>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="field_updTime">Изменён</label>
+        <input type="datetime-local" class="form-control" name="updTime" id="field_updTime"
+               formControlName="updTime" readonly/>
+      </div>
+
+    </div>
+
+    <div class="btn-group float-right shadow rounded" style="margin-bottom: 5px!important;">
+      <button style="border-right-color: white" type="button" id="cancel-save"
+              class="btn btn-sm shadow-sm btn-secondary" (click)="clear()">
+        &nbsp;<span>Отмена</span>
+      </button>
+      <button style="border-left-color: white" type="submit" id="save-entity"
+              [disabled]="editForm.invalid || isSaving" class="btn btn-sm shadow-sm btn-primary">
+        <span>Сохранить</span>
+      </button>
+    </div>
+  </form>
+    <app-error *ngIf="errorMessage" [errorMessage]="errorMessage"
+             (closeAlert)="closeError()"></app-error>
+</div>

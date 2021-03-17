@@ -1,0 +1,21 @@
+<form *ngIf="qualityIndicator" name="deleteForm">
+  <div class="modal-header">
+    <h4 class="modal-title">Подтверждение операции удаления</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            (click)="clear()">&times;
+    </button>
+  </div>
+  <div class="modal-body">
+    <p id="jhi-delete-ticketChangeHistory-heading"> Вы уверены что хотите удалить кач хар.
+      = {{qualityIndicator.name}}? </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+      <span>Отмена</span>
+    </button>
+    <button (click)="confirmDelete(qualityIndicator.id)" id="jhi-confirm-delete-ticketChangeHistory" type="submit"
+            class="btn btn-danger">
+      <span>Удалить</span>
+    </button>
+  </div>
+</form>

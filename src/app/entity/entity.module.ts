@@ -8,6 +8,7 @@ import {TypeResourceModule} from './type-resource/type-resource.module';
 import {ClassResourceModule} from './class-resource/class-resource.module';
 import {TypeMaterialLinkModule} from './type-material-link/type-material-link.module';
 import {ClassMaterialLinkModule} from './class-material-link/class-material-link.module';
+import {QualityIndicatorModule} from './quality-indicator/quality-indicator.module';
 
 const routes: Routes = [
   {
@@ -37,13 +38,17 @@ const routes: Routes = [
   {
     path: 'resource',
     loadChildren: () => import('./resource/resource.module').then(m => m.ResourceModule)
+  },
+  {
+    path: 'quality-indicator',
+    loadChildren: () => import('./quality-indicator/quality-indicator.module').then(m => m.QualityIndicatorModule)
   }];
 
 @NgModule({
   declarations: [],
   imports: [RouterModule.forChild(routes),
     CommonModule, SupplierModule, MarkResourceModule, TypeResourceModule, ResourceModule,
-    ClassResourceModule, TypeMaterialLinkModule, ClassMaterialLinkModule
+    ClassResourceModule, TypeMaterialLinkModule, ClassMaterialLinkModule, QualityIndicatorModule
   ]
 })
 export class EntityModule { }
