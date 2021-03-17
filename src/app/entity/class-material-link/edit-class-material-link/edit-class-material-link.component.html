@@ -1,7 +1,7 @@
 <div class="modal-header">
 
-  <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading">Добавить связь материальный ресурс - тип</h2>
-  <h2 *ngIf="editForm.get('id')!.value">Редактировать связь материальный ресурс - тип</h2>
+  <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading">Добавить связь материальный ресурс - класс</h2>
+  <h2 *ngIf="editForm.get('id')!.value">Редактировать связь материальный ресурс - класс</h2>
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
           (click)="clear()">&times;
   </button>
@@ -26,12 +26,12 @@
       </div>
       <div class="form-group">
         <label class="form-control-label"
-               for="field_materialResourceTypeId">Тип материального ресурса</label>
-        <select class="form-control shadow-sm bg-white rounded" id="field_materialResourceTypeId" name="materialResourceTypeId"
-                formControlName="materialResourceTypeId" >
-          <option *ngIf="!editForm.get('materialResourceTypeId')!.value" [ngValue]="null"></option>
+               for="field_materialResourceClassId">Класс материального ресурса</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_materialResourceClassId" name="materialResourceClassId"
+                formControlName="materialResourceClassId" >
+          <option *ngIf="!editForm.get('materialResourceClassId')!.value" [ngValue]="null"></option>
           <option [ngValue]="mark.id"
-                  *ngFor="let mark of materialResourceTypeList; trackBy: trackByIdType">{{mark.name}}</option>
+                  *ngFor="let mark of classResources; trackBy: trackByIdType">{{mark.name}}</option>
         </select>
       </div>
 

@@ -8,17 +8,19 @@ import {FilterClassResourceComponent} from './filter-class-resource/filter-class
 import {ClassResourceComponent} from './class-resource.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SupplierModule} from '../supplier/supplier.module';
 
 
 @NgModule({
   declarations: [ClassResourceComponent, EditClassResourceComponent, DeleteClassResourceComponent, FilterClassResourceComponent],
-  imports: [
-    CommonModule,
-    ClassResourceRoutingModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        ClassResourceRoutingModule,
+        NgbPaginationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SupplierModule
+    ],
   entryComponents: [EditClassResourceComponent, DeleteClassResourceComponent, FilterClassResourceComponent],
 })
 export class ClassResourceModule {

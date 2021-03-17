@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterTypeMaterialLinkComponent } from './filter-type-material-link.component';
 
-describe('FilterResourceComponent', () => {
+describe('FilterTypeMaterialLinkComponent', () => {
   let component: FilterTypeMaterialLinkComponent;
   let fixture: ComponentFixture<FilterTypeMaterialLinkComponent>;
 

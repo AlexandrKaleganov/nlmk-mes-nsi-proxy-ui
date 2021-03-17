@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteTypeMaterialLinkComponent } from './delete-type-material-link.component';
 
-describe('DeleteResourceComponent', () => {
+describe('DeleteTypeMaterialLinkComponent', () => {
   let component: DeleteTypeMaterialLinkComponent;
   let fixture: ComponentFixture<DeleteTypeMaterialLinkComponent>;
 

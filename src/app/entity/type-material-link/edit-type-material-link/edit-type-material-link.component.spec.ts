@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditTypeMaterialLinkComponent } from './edit-type-material-link.component';
 
-describe('EditResourceComponent', () => {
+describe('EditTypeMaterialLinkComponent', () => {
   let component: EditTypeMaterialLinkComponent;
   let fixture: ComponentFixture<EditTypeMaterialLinkComponent>;
 

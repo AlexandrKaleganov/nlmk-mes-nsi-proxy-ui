@@ -1,0 +1,71 @@
+<div class="justify-content-center">
+  <div class="row">
+    <div class="col-12" style="padding: 10px">
+      <div class="card  mb-5 bg-white rounded p-0">
+        <div class="card-header  align-middle ">
+          <div class="float-left" style="padding-right: 10px">
+            <h3><span>Свзи материальных ресурсов и классов ресурсов</span></h3>
+          </div>
+          <div class="btn-group float-left rounded">
+            <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="showFilter()">
+              Отобразить фильтр
+            </button>
+            <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="deleteFilters()">
+              Очистить фильтры
+            </button>
+          </div>
+          <div class="btn-group float-right rounded">
+            <button
+              class="btn btn-primary btn-sm shadow float-right jh-create-entity create-ticket"
+              (click)="addNewResource()">
+              <span>Добавить связь</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-body shadow" style="overflow: auto; width: 100%;">
+          <table class="table table-striped  " style="padding: 0">
+            <thead class="">
+            <tr>
+              <th class="text-center" scope="col">Код материального ресурса</th>
+              <th class="text-center"  scope="col">Код класса материального ресурса</th>
+              <th class="text-center"  scope="col">Создан</th>
+              <th class="text-center"  scope="col">Обновлён</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let resource of classMaterialLinks">
+              <th class=" text-center">{{resource.materialResourceCode}}</th>
+              <td class=" text-center">{{resource.materialResourceClassCode}}</td>
+              <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
+              </td>
+              <td class=" text-center">{{resource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}
+              </td>
+
+              <td class=" text-center">
+                <div class="btn-group">
+                  <button class="btn float-right btn-primary btn-sm shadow rounded"  style="border-right-color: white" (click)="edit(resource)">
+                    Редактировать
+                  </button>
+                  <button class="btn  btn-sm shadow float-right btn-danger"  style="border-left-color: white" (click)="delete(resource)">
+                    Удалить
+                  </button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="row justify-content-center">
+            <span>{{(page - 1) * itemsPerPage + 1 + ' - ' + itemsPerPage * page}}</span>
+          </div>
+          <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

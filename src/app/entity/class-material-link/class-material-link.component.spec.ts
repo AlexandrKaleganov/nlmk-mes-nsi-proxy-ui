@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeMaterialLinkComponent } from './type-material-link.component';
+import { ClassMaterialLinkComponent } from './class-material-link.component';
 
-describe('TypeMaterialLinkComponent', () => {
-  let component: TypeMaterialLinkComponent;
-  let fixture: ComponentFixture<TypeMaterialLinkComponent>;
+describe('ClassMaterialLinkComponent', () => {
+  let component: ClassMaterialLinkComponent;
+  let fixture: ComponentFixture<ClassMaterialLinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeMaterialLinkComponent ]
+      declarations: [ ClassMaterialLinkComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeMaterialLinkComponent);
+    fixture = TestBed.createComponent(ClassMaterialLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

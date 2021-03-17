@@ -8,17 +8,19 @@ import {FilterMarkResourceComponent} from './filter-mark-resource/filter-mark-re
 import {MarkResourceComponent} from './mark-resource.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SupplierModule} from '../supplier/supplier.module';
 
 
 @NgModule({
   declarations: [MarkResourceComponent, EditMarkResourceComponent, DeleteMarkResourceComponent, FilterMarkResourceComponent],
-  imports: [
-    CommonModule,
-    MarkResourceRoutingModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        MarkResourceRoutingModule,
+        NgbPaginationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SupplierModule
+    ],
   entryComponents: [EditMarkResourceComponent, DeleteMarkResourceComponent, FilterMarkResourceComponent],
 })
 export class MarkResourceModule {

@@ -8,17 +8,19 @@ import {FilterTypeResourceComponent} from './filter-type-resource/filter-type-re
 import {TypeResourceComponent} from './type-resource.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SupplierModule} from '../supplier/supplier.module';
 
 
 @NgModule({
   declarations: [TypeResourceComponent, EditTypeResourceComponent, DeleteTypeResourceComponent, FilterTypeResourceComponent],
-  imports: [
-    CommonModule,
-    TypeResourceRoutingModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        TypeResourceRoutingModule,
+        NgbPaginationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SupplierModule
+    ],
   entryComponents: [EditTypeResourceComponent, DeleteTypeResourceComponent, FilterTypeResourceComponent],
 })
 export class TypeResourceModule {
