@@ -4,6 +4,7 @@ import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PageModel} from '../../shared/models/page-model.model';
 import {Resource} from '../../shared/models/resource.model';
+import {TypeResource} from '../../shared/models/type-resource.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,11 @@ export class ResourceService {
         observe: 'response'
       });
   }
-
+  findAllList(): Observable<HttpResponse<Resource[]>> {
+    return this.http.get<Resource[]>(this.url + '/list', {
+      observe: 'response'
+    });
+  }
   delete(id: string): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.url}/${id}`,
       {

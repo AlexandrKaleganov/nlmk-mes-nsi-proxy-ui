@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SupplierModule} from './supplier/supplier.module';
 import {MarkResourceModule} from './mark-resource/mark-resource.module';
-import {ResourceComponent} from './resource/resource.component';
 import {ResourceModule} from './resource/resource.module';
 import {TypeResourceModule} from './type-resource/type-resource.module';
 import {ClassResourceModule} from './class-resource/class-resource.module';
+import {TypeMaterialLinkModule} from './type-material-link/type-material-link.module';
 
 const routes: Routes = [
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./class-resource/class-resource.module').then(m => m.ClassResourceModule)
   },
   {
+    path: 'type-material-link',
+    loadChildren: () => import('./type-material-link/type-material-link.module').then(m => m.TypeMaterialLinkModule)
+  },
+  {
     path: 'resource',
     loadChildren: () => import('./resource/resource.module').then(m => m.ResourceModule)
   }];
@@ -33,7 +37,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [RouterModule.forChild(routes),
-    CommonModule, SupplierModule, MarkResourceModule, TypeResourceModule, ResourceModule, ClassResourceModule
+    CommonModule, SupplierModule, MarkResourceModule, TypeResourceModule, ResourceModule, ClassResourceModule, TypeMaterialLinkModule
   ]
 })
 export class EntityModule { }
