@@ -39,7 +39,7 @@ export class QualityIndicatorMaterialLinkComponent implements OnInit {
       options = options.set('page', (pageToLoad - 1).toString());
     }
     options = options.set('size', this.itemsPerPage.toString());
-    options = options.set('sort', 'materialResourceCode');
+    options = options.set('sort', 'materialResourceName');
     if (this.codeFilter) {
       options = options.set('code.contains', this.codeFilter);
     }
@@ -93,11 +93,11 @@ export class QualityIndicatorMaterialLinkComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterQualityIndicatorMaterialLinkComponent, {size: 'lg', backdrop: 'static'});
-    modelRef.componentInstance.materialResourceId = this.materialResourceId;
-    modelRef.componentInstance.materialResourceTypeId = this.qualityCharacteristicId;
-    modelRef.componentInstance.loadDirectories();
-    modelRef.result.then(result => {
+    const modalRef = this.modalService.open(FilterQualityIndicatorMaterialLinkComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.materialResourceId = this.materialResourceId;
+    modalRef.componentInstance.materialResourceTypeId = this.qualityCharacteristicId;
+    modalRef.componentInstance.loadDirectories();
+    modalRef.result.then(result => {
       if (result) {
         this.materialResourceId = result.materialResourceId;
         this.qualityCharacteristicId = result.qualityCharacteristicId;

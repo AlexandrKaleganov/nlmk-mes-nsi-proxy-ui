@@ -83,10 +83,10 @@ export class ClassResourceComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterClassResourceComponent, {size: 'lg', backdrop: 'static'});
-    modelRef.componentInstance.codeFilter = this.codeFilter;
-    modelRef.componentInstance.nameFilter = this.nameFilter;
-    modelRef.result.then(result => {
+    const modalRef = this.modalService.open(FilterClassResourceComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.codeFilter = this.codeFilter;
+    modalRef.componentInstance.nameFilter = this.nameFilter;
+    modalRef.result.then(result => {
       console.log(result);
       if (result) {
         this.codeFilter = result.codeFilter;

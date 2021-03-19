@@ -6,14 +6,12 @@ import {DATE_TIME_FORMAT} from '../../../shared/constant/input.constant';
 import {HttpResponse} from '@angular/common/http';
 import {QualityIndicatorService} from '../quality-indicator.service';
 import {Resource} from '../../../shared/models/resource.model';
-import {Supplier} from '../../../shared/models/supplier.model';
 import {MarkResource} from '../../../shared/models/mark-resource.class';
-import {MarkResourceService} from '../../mark-resource/mark-resource.service';
-import {SupplierService} from '../../supplier/supplier.service';
 import {QualityIndicator} from '../../../shared/models/quality-indicator.model';
+import {Supplier} from '../../../shared/models/supplier.model';
 
 @Component({
-  selector: 'app-edit-resource',
+  selector: 'app-edit-quality-indicator',
   templateUrl: './edit-quality-indicator.component.html',
   styleUrls: ['./edit-quality-indicator.component.css']
 })

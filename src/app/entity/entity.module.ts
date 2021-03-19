@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SupplierModule} from './supplier/supplier.module';
 import {MarkResourceModule} from './mark-resource/mark-resource.module';
@@ -10,8 +10,13 @@ import {TypeMaterialLinkModule} from './type-material-link/type-material-link.mo
 import {ClassMaterialLinkModule} from './class-material-link/class-material-link.module';
 import {QualityIndicatorModule} from './quality-indicator/quality-indicator.module';
 import {QualityIndicatorMaterialLinkModule} from './quality-indicator-material-link/quality-indicator-material-link.module';
+import {StructureCompanyModule} from './structure-company/structure-company.module';
 
 const routes: Routes = [
+  {
+    path: 'structure-company',
+    loadChildren: () => import('./structure-company/structure-company.module').then(m => m.StructureCompanyModule)
+  },
   {
     path: 'supplier',
     loadChildren: () => import('./supplier/supplier.module').then(m => m.SupplierModule)
@@ -54,7 +59,9 @@ const routes: Routes = [
   declarations: [],
   imports: [RouterModule.forChild(routes),
     CommonModule, SupplierModule, MarkResourceModule, TypeResourceModule, ResourceModule,
-    ClassResourceModule, TypeMaterialLinkModule, ClassMaterialLinkModule, QualityIndicatorModule, QualityIndicatorMaterialLinkModule
+    ClassResourceModule, TypeMaterialLinkModule, ClassMaterialLinkModule, QualityIndicatorModule, QualityIndicatorMaterialLinkModule,
+    StructureCompanyModule
   ]
 })
-export class EntityModule { }
+export class EntityModule {
+}

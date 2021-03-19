@@ -3,7 +3,6 @@ import {SupplierService} from './supplier.service';
 import {Supplier} from '../../shared/models/supplier.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpParams} from '@angular/common/http';
-import {EventManagerService} from '../../shared/service/event-manager.service';
 import {EditSupplierComponent} from './edit-supplier/edit-supplier.component';
 import {DeleteSupplierComponent} from './delete-supplier/delete-supplier.component';
 import {FilterSupplierComponent} from './filter-supplier/filter-supplier.component';
@@ -83,10 +82,10 @@ export class SupplierComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
-    modelRef.componentInstance.codeFilter = this.codeFilter;
-    modelRef.componentInstance.nameFilter = this.nameFilter;
-    modelRef.result.then(result => {
+    const modalRef = this.modalService.open(FilterSupplierComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.codeFilter = this.codeFilter;
+    modalRef.componentInstance.nameFilter = this.nameFilter;
+    modalRef.result.then(result => {
       console.log(result);
       if (result) {
         this.codeFilter = result.codeFilter;

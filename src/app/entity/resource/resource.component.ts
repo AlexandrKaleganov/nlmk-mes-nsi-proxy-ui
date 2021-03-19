@@ -96,14 +96,14 @@ export class ResourceComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterResourceComponent, {size: 'lg', backdrop: 'static'});
-    modelRef.componentInstance.codeFilter = this.codeFilter;
-    modelRef.componentInstance.nameFilter = this.nameFilter;
-    modelRef.componentInstance.materialResourceMarkId = this.materialResourceMarkId;
-    modelRef.componentInstance.materialResourceTypeId = this.materialResourceTypeId;
-    modelRef.componentInstance.materialResourceClassId = this.materialResourceClassId;
-    modelRef.componentInstance.loadDirectories();
-    modelRef.result.then(result => {
+    const modalRef = this.modalService.open(FilterResourceComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.codeFilter = this.codeFilter;
+    modalRef.componentInstance.nameFilter = this.nameFilter;
+    modalRef.componentInstance.materialResourceMarkId = this.materialResourceMarkId;
+    modalRef.componentInstance.materialResourceTypeId = this.materialResourceTypeId;
+    modalRef.componentInstance.materialResourceClassId = this.materialResourceClassId;
+    modalRef.componentInstance.loadDirectories();
+    modalRef.result.then(result => {
       if (result) {
         this.codeFilter = result.codeFilter;
         this.nameFilter = result.nameFilter;

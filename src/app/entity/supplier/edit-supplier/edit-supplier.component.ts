@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {EventManagerService} from '../../../shared/service/event-manager.service';
-import {Supplier} from '../../../shared/models/supplier.model';
 import {SupplierService} from '../supplier.service';
 import {HttpResponse} from '@angular/common/http';
 import {DATE_TIME_FORMAT} from '../../../shared/constant/input.constant';
 import * as moment from 'moment';
+import {Supplier} from '../../../shared/models/supplier.model';
 
 @Component({
   selector: 'app-edit-supplier',

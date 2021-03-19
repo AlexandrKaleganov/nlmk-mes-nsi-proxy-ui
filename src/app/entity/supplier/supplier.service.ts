@@ -4,7 +4,6 @@ import {PageModel} from '../../shared/models/page-model.model';
 import {Supplier} from '../../shared/models/supplier.model';
 import {Observable} from 'rxjs';
 import {GLOBAL_URL} from '../../shared/constant/url.constant';
-import {MarkResource} from '../../shared/models/mark-resource.class';
 
 @Injectable({
   providedIn: 'root'

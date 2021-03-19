@@ -86,12 +86,12 @@ export class QualityIndicatorComponent implements OnInit {
   }
 
   showFilter(): void {
-    const modelRef = this.modalService.open(FilterQualityIndicatorComponent, {size: 'lg', backdrop: 'static'});
-    modelRef.componentInstance.codeFilter = this.codeFilter;
-    modelRef.componentInstance.nameFilter = this.nameFilter;
-    modelRef.componentInstance.materialResourceId = this.materialResourceId;
-    modelRef.componentInstance.loadDirectories();
-    modelRef.result.then(result => {
+    const modalRef = this.modalService.open(FilterQualityIndicatorComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.codeFilter = this.codeFilter;
+    modalRef.componentInstance.nameFilter = this.nameFilter;
+    modalRef.componentInstance.materialResourceId = this.materialResourceId;
+    modalRef.componentInstance.loadDirectories();
+    modalRef.result.then(result => {
       if (result) {
         this.codeFilter = result.codeFilter;
         this.nameFilter = result.nameFilter;
