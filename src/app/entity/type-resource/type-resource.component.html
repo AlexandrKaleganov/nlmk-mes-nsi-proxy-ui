@@ -28,7 +28,6 @@
             <tr>
               <th class="text-center" scope="col">Код</th>
               <th class="text-center"  scope="col">Наименование</th>
-              <th class="text-center"  scope="col">SAP_ID</th>
               <th class="text-center"  scope="col">Создан</th>
               <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
@@ -38,7 +37,6 @@
             <tr *ngFor="let typeResource of typeResources">
               <th class=" text-center">{{typeResource.code}}</th>
               <td class=" text-center">{{typeResource.name}}</td>
-              <td class=" text-center">{{typeResource.sapId}}</td>
               <td class=" text-center">{{typeResource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
               <td class=" text-center">{{typeResource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}

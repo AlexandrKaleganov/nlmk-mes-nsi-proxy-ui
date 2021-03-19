@@ -26,7 +26,6 @@ export class EditTypeResourceComponent implements OnInit {
   editForm = this.fb.group({
     id: [null],
     name: [null, [Validators.required]],
-    sapId: [null],
     code: [null, [Validators.required]],
     insTime: [null],
     updTime: [null],
@@ -40,7 +39,6 @@ export class EditTypeResourceComponent implements OnInit {
     this.editForm.patchValue({
       id: this.typeResource.id,
       name: this.typeResource.name,
-      sapId: this.typeResource.sapId,
       code: this.typeResource.code,
       insTime: this.typeResource.insTime != null ?  moment(this.typeResource.insTime).format(DATE_TIME_FORMAT) : null,
       updTime: this.typeResource.insTime != null ?  moment(this.typeResource.updTime).format(DATE_TIME_FORMAT) : null,
@@ -77,7 +75,6 @@ export class EditTypeResourceComponent implements OnInit {
       ...new TypeResource(),
       id: this.editForm.get(['id']).value ? this.editForm.get(['id']).value : null,
       name: this.editForm.get(['name']).value,
-      sapId: this.editForm.get(['sapId']).value,
       code: this.editForm.get(['code']).value,
     };
   }

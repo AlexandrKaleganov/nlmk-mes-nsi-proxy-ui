@@ -29,18 +29,6 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="form-control-label" for="field_sapId">SAP_ID</label>
-        <input autocomplete="off" type="text" class="form-control" name="sapId" id="field_sapId"
-               formControlName="sapId"/>
-        <div
-          *ngIf="editForm.get('sapId')!.invalid && (editForm.get('sapId')!.dirty || editForm.get('sapId')!.touched)">
-          <small class="form-text text-danger"
-                 *ngIf="editForm.get('sapId')?.errors?.required">
-            This field is required.
-          </small>
-        </div>
-      </div>
-      <div class="form-group">
         <label class="form-control-label" for="field_name">Код</label>
         <input autocomplete="off" type="text" class="form-control" name="code" id="field_code"
                formControlName="code" />
