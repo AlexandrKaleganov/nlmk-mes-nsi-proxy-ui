@@ -38,7 +38,7 @@ export class ClassMaterialLinkComponent implements OnInit {
       options = options.set('page', (pageToLoad - 1).toString());
     }
     options = options.set('size', this.itemsPerPage.toString());
-    options = options.set('sort', 'materialResourceName');
+    options = options.set('sort', 'materialResource.name');
     if (this.codeFilter) {
       options = options.set('code.contains', this.codeFilter);
     }
