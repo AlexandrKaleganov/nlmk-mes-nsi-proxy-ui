@@ -2,7 +2,7 @@
 
   <h2 *ngIf="!editForm.get('id')!.value" id="jhi-app-heading"
   >Добавить поставщика</h2>
-  <h2 *ngIf="editForm.get('id')!.value">Редактировать структуру компании</h2>
+  <h2 *ngIf="editForm.get('id')!.value">Редактировать поставщика</h2>
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
           (click)="clear()">&times;
   </button>
@@ -29,6 +29,18 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="form-control-label" for="field_shortName">Краткое наименование</label>
+        <input autocomplete="off" type="text" class="form-control" name="shortName" id="field_shortName"
+               formControlName="shortName"/>
+        <div
+          *ngIf="editForm.get('shortName')!.invalid && (editForm.get('shortName')!.dirty || editForm.get('shortName')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('shortName')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
         <label class="form-control-label" for="field_name">Код</label>
         <input autocomplete="off" type="text" class="form-control" name="code" id="field_code"
                formControlName="code" />
@@ -42,14 +54,41 @@
       </div>
       <div class="form-group">
         <label class="form-control-label"
-               for="field_parentId">Родитель</label>
-        <select class="form-control shadow-sm bg-white rounded" id="field_parentId" name="parentId"
-                formControlName="parentId" >
-          <option *ngIf="!editForm.get('parentId')!.value" [ngValue]="null"></option>
-          <option [ngValue]="mark.id"
-                  *ngFor="let mark of parentList; trackBy: trackById">{{mark.name}}</option>
+               for="field_isActive">Активный</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_isActive" name="isActive"
+                formControlName="isActive" >
+          <option *ngIf="!editForm.get('isActive')!.value" [ngValue]="true"></option>
+          <option value="{{false}}">Нет</option>
+          <option value="{{true}}">Да</option>
+
         </select>
       </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="field_startDate">Дата начала действия</label>
+        <input type="date" class="form-control" name="startDate" id="field_startDate"
+               formControlName="startDate"/>
+        <div
+          *ngIf="editForm.get('startDate')!.invalid && (editForm.get('startDate')!.dirty || editForm.get('startDate')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('startDate')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="field_endDate">ДАта окончания действия</label>
+        <input type="date" class="form-control" name="endDate" id="field_endDate"
+               formControlName="endDate" />
+        <div
+          *ngIf="editForm.get('endDate')!.invalid && (editForm.get('endDate')!.dirty || editForm.get('endDate')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('endDate')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="form-control-label" for="field_insTime">Добавлен</label>
         <input type="datetime-local" class="form-control" name="insTime" id="field_insTime"
