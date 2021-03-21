@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ClassMaterialLinkService} from '../class-material-link.service';
 import {TypeMaterialLink} from '../../../shared/models/type-material-link.model';
+import {ClassMaterialLink} from '../../../shared/models/class-material-link.model';
 
 @Component({
   selector: 'app-delete-class-material-link',
@@ -9,10 +10,10 @@ import {TypeMaterialLink} from '../../../shared/models/type-material-link.model'
   styleUrls: ['./delete-class-material-link.component.css']
 })
 export class DeleteClassMaterialLinkComponent implements OnInit {
-  classMaterialLink?: TypeMaterialLink;
+  classMaterialLink?: ClassMaterialLink;
 
   constructor(
-    protected resourceService: ClassMaterialLinkService,
+    protected classMaterialLinkService: ClassMaterialLinkService,
     public activeModal: NgbActiveModal
   ) {
   }
@@ -22,7 +23,7 @@ export class DeleteClassMaterialLinkComponent implements OnInit {
   }
 
   confirmDelete(id: string): void {
-    this.resourceService.delete(id).subscribe(() => {
+    this.classMaterialLinkService.delete(id).subscribe(() => {
       this.activeModal.close({
         update: true
       });
