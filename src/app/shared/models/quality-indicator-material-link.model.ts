@@ -9,8 +9,12 @@ export class QualityIndicatorMaterialLink {
     public qualityIndicatorName?: string,
     public materialResourceName?: string,
     public id?: string,
+    public mandatory?: boolean,
+    public isMain?: boolean,
     public insTime?: Moment,
     public updTime?: Moment,
   ) {
+    this.isMain = this.isMain || true;
+    this.mandatory = this.mandatory || true;
   }
 }

@@ -11,18 +11,20 @@ import {FilterRegulatoryDocumentComponent} from './filter-regulatory-document/fi
 import {AppModule} from '../../app.module';
 import {BooleanPipe} from '../../shared/pipe/boolean.pipe';
 import {BooleanNamePipe} from '../../shared/pipe/boolean-name.pipe';
+import {SupplierModule} from '../supplier/supplier.module';
 
 
 @NgModule({
   declarations: [RegulatoryDocumentComponent, EditRegulatoryDocumentComponent,  BooleanPipe, BooleanNamePipe,
     DeleteRegulatoryDocumentComponent, FilterRegulatoryDocumentComponent],
-  imports: [
-    CommonModule,
-    RegulatoryDocumentRoutingModule,
-    NgbPaginationModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RegulatoryDocumentRoutingModule,
+        NgbPaginationModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SupplierModule,
+    ],
   exports: [ BooleanPipe, BooleanNamePipe],
   entryComponents: [EditRegulatoryDocumentComponent, DeleteRegulatoryDocumentComponent, FilterRegulatoryDocumentComponent]
 })

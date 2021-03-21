@@ -30,6 +30,8 @@
               <th class="text-center" scope="col">Наименование мат. ресурса</th>
               <th class="text-center"  scope="col">Код код. кач характеристики </th>
               <th class="text-center"  scope="col">Наименование код. кач характеристики </th>
+              <th class="text-center"  scope="col">Обзательный </th>
+              <th class="text-center"  scope="col">Основной</th>
               <th class="text-center"  scope="col">Создан</th>
               <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
@@ -41,6 +43,9 @@
               <th class=" text-center">{{resource.materialResourceName}}</th>
               <td class=" text-center">{{resource.qualityIndicatorCode}}</td>
               <td class=" text-center">{{resource.qualityIndicatorName}}</td>
+              <td class=" text-center">
+                <span class="{{getString(resource.mandatory)|boolean}}"> {{getString(resource.mandatory) |booleanName}}</span></td>
+              <td class=" text-center"> <span class="{{getString(resource.isMain)|boolean}}"> {{getString(resource.isMain) |booleanName}}</span></td>
               <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
               <td class=" text-center">{{resource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}

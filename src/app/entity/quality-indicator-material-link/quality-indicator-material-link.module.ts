@@ -9,19 +9,21 @@ import {QualityIndicatorMaterialLinkComponent} from './quality-indicator-materia
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SupplierModule} from '../supplier/supplier.module';
+import {RegulatoryDocumentModule} from '../regulatory-document/regulatory-document.module';
 
 
 @NgModule({
   declarations: [QualityIndicatorMaterialLinkComponent, EditQualityIndicatorMaterialLinkComponent,
     DeleteQualityIndicatorMaterialLinkComponent, FilterQualityIndicatorMaterialLinkComponent],
-  imports: [
-    CommonModule,
-    QualityIndicatorMaterialLinkRoutingModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SupplierModule
-  ],
+    imports: [
+        CommonModule,
+        QualityIndicatorMaterialLinkRoutingModule,
+        NgbPaginationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SupplierModule,
+        RegulatoryDocumentModule
+    ],
   entryComponents: [EditQualityIndicatorMaterialLinkComponent, DeleteQualityIndicatorMaterialLinkComponent, FilterQualityIndicatorMaterialLinkComponent],
 })
 export class QualityIndicatorMaterialLinkModule {

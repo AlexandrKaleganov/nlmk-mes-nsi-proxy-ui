@@ -34,6 +34,27 @@
                   *ngFor="let mark of qualityIndicators; trackBy: trackByIdType">{{mark.name}}</option>
         </select>
       </div>
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_mandatory">Обязательный</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_mandatory" name="mandatory"
+                formControlName="mandatory" >
+          <option *ngIf="!editForm.get('mandatory')!.value" [ngValue]="true"></option>
+          <option value="{{false}}">Нет</option>
+          <option value="{{true}}">Да</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_isMain">Основной</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_isMain" name="isMain"
+                formControlName="isMain" >
+          <option *ngIf="!editForm.get('isMain')!.value" [ngValue]="true"></option>
+          <option value="{{false}}">Нет</option>
+          <option value="{{true}}">Да</option>
+        </select>
+      </div>
 
       <div class="form-group">
         <label class="form-control-label" for="field_insTime">Добавлен</label>

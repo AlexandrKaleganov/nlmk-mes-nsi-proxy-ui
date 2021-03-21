@@ -6,11 +6,7 @@ import {DATE_TIME_FORMAT} from '../../../shared/constant/input.constant';
 import {HttpResponse} from '@angular/common/http';
 import {QualityIndicatorMaterialLinkService} from '../quality-indicator-material-link.service';
 import {Resource} from '../../../shared/models/resource.model';
-import {Supplier} from '../../../shared/models/supplier.model';
-import {MarkResource} from '../../../shared/models/mark-resource.class';
 import {ResourceService} from '../../resource/resource.service';
-import {TypeResourceService} from '../../type-resource/type-resource.service';
-import {TypeResource} from '../../../shared/models/type-resource.model';
 import {QualityIndicatorMaterialLink} from '../../../shared/models/quality-indicator-material-link.model';
 import {QualityIndicator} from '../../../shared/models/quality-indicator.model';
 import {QualityIndicatorService} from '../../quality-indicator/quality-indicator.service';
@@ -43,6 +39,8 @@ export class EditQualityIndicatorMaterialLinkComponent implements OnInit {
     id: [null],
     materialResourceId: [null, [Validators.required]],
     qualityIndicatorId: [null, [Validators.required]],
+    isMain: [null, [Validators.required]],
+    mandatory: [null, [Validators.required]],
     insTime: [null],
     updTime: [null],
   });
@@ -75,6 +73,8 @@ export class EditQualityIndicatorMaterialLinkComponent implements OnInit {
       id: this.qualityIndicatorMaterialLink.id,
       materialResourceId: this.qualityIndicatorMaterialLink.materialResourceId,
       qualityIndicatorId: this.qualityIndicatorMaterialLink.qualityIndicatorId,
+      isMain: this.qualityIndicatorMaterialLink.isMain,
+      mandatory: this.qualityIndicatorMaterialLink.mandatory,
       insTime: this.qualityIndicatorMaterialLink.insTime != null ?
         moment(this.qualityIndicatorMaterialLink.insTime).format(DATE_TIME_FORMAT) : null,
       updTime: this.qualityIndicatorMaterialLink.insTime != null ?
@@ -111,6 +111,8 @@ export class EditQualityIndicatorMaterialLinkComponent implements OnInit {
     return {
       ...new QualityIndicatorMaterialLink(),
       id: this.editForm.get(['id']).value ? this.editForm.get(['id']).value : null,
+      isMain:  this.editForm.get(['isMain']).value,
+      mandatory: this.editForm.get(['mandatory']).value,
       materialResourceId: this.editForm.get(['materialResourceId']).value,
       qualityIndicatorId: this.editForm.get(['qualityIndicatorId']).value,
     };

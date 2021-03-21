@@ -105,7 +105,9 @@ export class QualityIndicatorMaterialLinkComponent implements OnInit {
       }
     });
   }
-
+  getString(b: boolean): string {
+    return b.toString();
+  }
   deleteFilters(): void {
     this.materialResourceId = null;
     this.qualityCharacteristicId = null;
