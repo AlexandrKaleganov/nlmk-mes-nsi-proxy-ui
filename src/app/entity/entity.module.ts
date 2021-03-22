@@ -14,6 +14,7 @@ import {StructureCompanyModule} from './structure-company/structure-company.modu
 import {StructureCompanyMaterialLinkModule} from './structure-company-material-link/structure-company-material-link.module';
 import {RegulatoryDocumentModule} from './regulatory-document/regulatory-document.module';
 import {DocumentMaterialLinkModule} from './document-material-link/document-material-link.module';
+import {ReferenceValueModule} from './reference-value/reference-value.module';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'supplier',
     loadChildren: () => import('./supplier/supplier.module').then(m => m.SupplierModule)
+  },
+  {
+    path: 'reference-value',
+    loadChildren: () => import('./reference-value/reference-value.module').then(m => m.ReferenceValueModule)
   },
   {
     path: 'mark-resource',
@@ -76,7 +81,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes),
     CommonModule, SupplierModule, MarkResourceModule, TypeResourceModule, ResourceModule,
     ClassResourceModule, TypeMaterialLinkModule, ClassMaterialLinkModule, QualityIndicatorModule, QualityIndicatorMaterialLinkModule,
-    StructureCompanyModule, StructureCompanyMaterialLinkModule, RegulatoryDocumentModule, DocumentMaterialLinkModule
+    StructureCompanyModule, StructureCompanyMaterialLinkModule, RegulatoryDocumentModule, DocumentMaterialLinkModule, ReferenceValueModule
   ]
 })
 export class EntityModule {
