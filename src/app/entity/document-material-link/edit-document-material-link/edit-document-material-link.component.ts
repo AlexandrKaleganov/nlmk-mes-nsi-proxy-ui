@@ -49,6 +49,7 @@ export class EditDocumentMaterialLinkComponent implements OnInit {
     id: [null],
     materialResourceId: [null, [Validators.required]],
     regulatoryDocumentId: [null, [Validators.required]],
+    qualityDeviationCheck: [true],
     insTime: [null],
     updTime: [null],
   });
@@ -81,6 +82,7 @@ export class EditDocumentMaterialLinkComponent implements OnInit {
       id: this.documentMaterialLink.id,
       materialResourceId: this.documentMaterialLink.materialResourceId,
       regulatoryDocumentId: this.documentMaterialLink.regulatoryDocumentId,
+      qualityDeviationCheck: this.documentMaterialLink.qualityDeviationCheck,
       insTime: this.documentMaterialLink.insTime != null ? moment(this.documentMaterialLink.insTime).format(DATE_TIME_FORMAT) : null,
       updTime: this.documentMaterialLink.insTime != null ? moment(this.documentMaterialLink.updTime).format(DATE_TIME_FORMAT) : null,
     });
@@ -116,6 +118,7 @@ export class EditDocumentMaterialLinkComponent implements OnInit {
       ...new DocumentMaterialLink(),
       id: this.editForm.get(['id']).value ? this.editForm.get(['id']).value : null,
       materialResourceId: this.editForm.get(['materialResourceId']).value,
+      qualityDeviationCheck: this.editForm.get(['qualityDeviationCheck']).value,
       regulatoryDocumentId: this.editForm.get(['regulatoryDocumentId']).value,
     };
   }

@@ -9,19 +9,21 @@ import {DocumentMaterialLinkComponent} from './document-material-link.component'
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SupplierModule} from '../supplier/supplier.module';
+import {RegulatoryDocumentModule} from '../regulatory-document/regulatory-document.module';
 
 
 @NgModule({
   declarations: [DocumentMaterialLinkComponent, EditDocumentMaterialLinkComponent,
     DeleteDocumentMaterialLinkComponent, FilterDocumentMaterialLinkComponent],
-  imports: [
-    CommonModule,
-    DocumentMaterialLinkRoutingModule,
-    NgbPaginationModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SupplierModule
-  ],
+    imports: [
+        CommonModule,
+        DocumentMaterialLinkRoutingModule,
+        NgbPaginationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SupplierModule,
+        RegulatoryDocumentModule
+    ],
   entryComponents: [EditDocumentMaterialLinkComponent, DeleteDocumentMaterialLinkComponent, FilterDocumentMaterialLinkComponent],
 })
 export class DocumentMaterialLinkModule {

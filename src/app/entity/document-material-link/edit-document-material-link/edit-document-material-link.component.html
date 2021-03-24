@@ -34,7 +34,16 @@
                   *ngFor="let mark of regulatoryDocuments; trackBy: trackByIdType">{{mark.name}}</option>
         </select>
       </div>
-
+      <div class="form-group">
+        <label class="form-control-label"
+               for="field_qualityDeviationCheck">Провести сравнение</label>
+        <select class="form-control shadow-sm bg-white rounded" id="field_qualityDeviationCheck" name="qualityDeviationCheck"
+                formControlName="qualityDeviationCheck" >
+          <option *ngIf="!editForm.get('qualityDeviationCheck')!.value" [ngValue]="true"></option>
+          <option value="{{false}}">Нет</option>
+          <option value="{{true}}">Да</option>
+        </select>
+      </div>
       <div class="form-group">
         <label class="form-control-label" for="field_insTime">Добавлен</label>
         <input type="datetime-local" class="form-control" name="insTime" id="field_insTime"

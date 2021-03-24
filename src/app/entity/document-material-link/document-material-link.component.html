@@ -29,6 +29,7 @@
               <th class="text-center" scope="col">Код мат. ресурса</th>
               <th class="text-center" scope="col">Наименование мат. ресурса</th>
               <th class="text-center"  scope="col">Наименование нормативного документа</th>
+              <th class="text-center"  scope="col">Необходимо провести сравнение</th>
               <th class="text-center"  scope="col">Создан</th>
               <th class="text-center"  scope="col">Обновлён</th>
               <th></th>
@@ -39,6 +40,7 @@
               <th class=" text-center">{{resource.materialResourceCode}}</th>
               <th class=" text-center">{{resource.materialResourceName}}</th>
               <td class=" text-center">{{resource.regulatoryDocumentName}}</td>
+              <td class=" text-center"> <span class="{{getString(resource.qualityDeviationCheck)|boolean}}"> {{getString(resource.qualityDeviationCheck) |booleanName}}</span></td>
               <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>
               <td class=" text-center">{{resource.updTime?.toString() | date:'dd.MM.yy HH:mm'}}

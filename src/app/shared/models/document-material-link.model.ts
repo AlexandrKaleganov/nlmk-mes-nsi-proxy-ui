@@ -7,10 +7,12 @@ export class DocumentMaterialLink {
     public regulatoryDocumentId?: string,
     public materialResourceCode?: string,
     public regulatoryDocumentName?: string,
+    public qualityDeviationCheck?: boolean,
     public id?: string,
     public insTime?: Moment,
     public updTime?: Moment,
   ) {
+    this.qualityDeviationCheck = this.qualityDeviationCheck || true;
   }
 }
 

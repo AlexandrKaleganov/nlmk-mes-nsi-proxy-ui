@@ -105,7 +105,9 @@ export class DocumentMaterialLinkComponent implements OnInit {
       }
     });
   }
-
+  getString(b: boolean): string {
+    return b.toString();
+  }
   deleteFilters(): void {
     this.materialResourceId = null;
     this.regulatoryDocumentId = null;
