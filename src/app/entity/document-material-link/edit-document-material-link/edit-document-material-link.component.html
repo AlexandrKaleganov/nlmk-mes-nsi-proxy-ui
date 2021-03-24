@@ -31,7 +31,7 @@
                 formControlName="regulatoryDocumentId" >
           <option *ngIf="!editForm.get('regulatoryDocumentId')!.value" [ngValue]="null"></option>
           <option [ngValue]="mark.id"
-                  *ngFor="let mark of regulatoryDocuments; trackBy: trackByIdType">{{mark.name}}</option>
+                  *ngFor="let mark of regulatoryDocuments; trackBy: trackByIdType">{{mark.name}} - "{{mark.shortName}}"</option>
         </select>
       </div>
       <div class="form-group">

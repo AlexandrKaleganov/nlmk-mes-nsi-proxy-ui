@@ -39,7 +39,7 @@
             <tr *ngFor="let resource of documentMaterialLinks">
               <th class=" text-center">{{resource.materialResourceCode}}</th>
               <th class=" text-center">{{resource.materialResourceName}}</th>
-              <td class=" text-center">{{resource.regulatoryDocumentName}}</td>
+              <td class=" text-center">{{resource.regulatoryDocumentName}} - "{{resource.regulatoryDocumentShortName}}"</td>
               <td class=" text-center"> <span class="{{getString(resource.qualityDeviationCheck)|boolean}}"> {{getString(resource.qualityDeviationCheck) |booleanName}}</span></td>
               <td class=" text-center">{{resource.insTime?.toString() | date:'dd.MM.yy HH:mm'}}
               </td>

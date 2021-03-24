@@ -7,6 +7,7 @@ export class DocumentMaterialLink {
     public regulatoryDocumentId?: string,
     public materialResourceCode?: string,
     public regulatoryDocumentName?: string,
+    public regulatoryDocumentShortName?: string,
     public qualityDeviationCheck?: boolean,
     public id?: string,
     public insTime?: Moment,
